@@ -22,14 +22,14 @@
 <div class="wrapper">
     <nav id="sidebar" class="sidebar js-sidebar">
         <div class="sidebar-content js-simplebar">
-            <a class="sidebar-brand" href="{{route('admin.index')}}">
+            <a class="sidebar-brand" href=" {{ url('/admin') }} ">
                 <span class="align-middle">Articles Dashboard</span>
             </a>
 
             <ul class="sidebar-nav">
 
-                <li class="sidebar-item active">
-                    <a class="sidebar-link" href="{{route('admin.index')}}">
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ url('/admin') }}">
                         <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
                     </a>
                 </li>
@@ -41,14 +41,20 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="pages-sign-in.html">
-                        <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign In</span>
+                    <a class="sidebar-link" href="{{ route('categories.index') }}">
+                        <i class="align-middle" data-feather="database"></i> <span class="align-middle">Categories</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item active">
+                    <a class="sidebar-link" href="{{route('articles.index')}}">
+                        <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Articles</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="pages-sign-up.html">
-                        <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign Up</span>
+                    <a class="sidebar-link" href="{{route('articles.create')}}">
+                        <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Create Article</span>
                     </a>
                 </li>
             </ul>
@@ -67,18 +73,19 @@
                         <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
                             <i class="align-middle" data-feather="settings"></i>
                         </a>
-
-                        <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                            <img src="{{asset('dashboard/img/avatars/avatar.jpg')}}" class="avatar img-fluid rounded me-1" alt="user image" /> <span class="text-dark">Charles Hall</span>
-                        </a>
+                        <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown"></a>
                         <div class="dropdown-menu dropdown-menu-end">
-                            <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
-                            <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
+                            <a class="dropdown-item" href="{{url('/profile')}}"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{route('admin.index')}}"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
-                            <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Log out</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         </div>
                     </li>
                 </ul>

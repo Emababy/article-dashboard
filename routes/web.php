@@ -1,6 +1,9 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,20 +16,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Auth::routes();
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::controller(DashboardController::class)->group(function () {
-    Route::get('/', 'index')->name('admin.index');
-});
 
-Route::get('/profile', function () {
-    return view('admin.profile.index');
-})->name('profile.index');
 
-Route::get('/signup', function () {
-    return view('admin.signup.index');
-})->name('signup.index');
 
-Route::get('/login', function () {
-    return view('admin.login.index');
-})->name('login.index');
 

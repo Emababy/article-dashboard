@@ -11,7 +11,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.articles.index');
     }
 
     /**
@@ -19,7 +19,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.articles.create');
     }
 
     /**
@@ -33,9 +33,9 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id) // route model binding
     {
-        //
+        return view('admin.articles.show');
     }
 
     /**

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\HomeController;
@@ -17,17 +18,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/',function (){
-   return view('admin.index');
-});
-
 Route::controller(CategoriesController::class)->group(function () {
     Route::get('/categories', 'index')->name('categories.index');
 });
 
 Route::controller(ArticleController::class)->group(function () {
+
     Route::get('/articles' , 'index')->name('articles.index');
+
     Route::get('/articles/create', 'create')->name('articles.create');
+
+    Route::post('/' , 'store')->name('articles.store');
+
+    Route::get('/articles/{article}/edit' , 'edit')->name('articles.edit');
+
+    Route::put('/articles/{article}' , 'update')->name('articles.update');
+
+    Route::delete('/articles/{article}' , 'destroy')->name('articles.destroy');
 
     Route::get('/articles/{article}', 'show')->name('articles.show');
 });

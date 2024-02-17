@@ -7,14 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
+    protected $fillable = [
+        'title',
+        'content',
+        'author_id',
+        'category_id',
+        'image',
+    ];
+
     use HasFactory;
 
-    protected $fillable = [
-        'article-title',
-        'article-content',
-        'article-image',
-        'article-author',
-        'article-category',
-        'article-image'
-    ];
+    public function user ()
+    {
+        return $this->belongsTo(User::class); // relations eloquent
+    }
+
+    public function category ()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

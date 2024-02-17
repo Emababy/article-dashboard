@@ -21,15 +21,15 @@
 <body>
 <div class="wrapper">
     <nav id="sidebar" class="sidebar js-sidebar">
-        <div class="sidebar-content js-simplebar">
-            <a class="sidebar-brand" href=" {{ url('/admin') }} ">
+        <div class="sidebar-content js-simpler">
+            <a class="sidebar-brand" href=" {{ route('admin.index') }} ">
                 <span class="align-middle">Articles Dashboard</span>
             </a>
 
             <ul class="sidebar-nav">
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ url('/admin') }}">
+                    <a class="sidebar-link" href="{{ route('admin.index') }}">
                         <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
                     </a>
                 </li>
